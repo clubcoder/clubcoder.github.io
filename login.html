@@ -63,7 +63,7 @@
         var loginOnClickAuth = function() {
             var password = $("#login-password").val();
             var email = $("#login-email").val();
-            var ref = new Firebase("https://ccim.firebaseio.com");
+            var ref = new Firebase("https://clubcim.firebaseio.com");
             ref.authWithPassword({
               email    : email,
               password : password
@@ -124,7 +124,7 @@
             var i;
             for (i = 0; i < elements.length; i++) {
                 var po2 = document.createElement('link'); po2.rel = 'import';
-                po2.href = '/polymer/' + elements[i] + '/' + elements[i] + '.html';
+                po2.href = 'http://jeffmeng.tk/polymer/' + elements[i] + '/' + elements[i] + '.html';
                 var so = document.getElementsByTagName('link')[i + 1]; so.parentNode.insertBefore(po2, so);
             }
           })();

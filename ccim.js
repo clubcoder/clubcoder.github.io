@@ -1,10 +1,10 @@
 
 /* global Firebase */
-var fb = new Firebase("https://ccim.firebaseio.com/");
-if (fb.getAuth() === null) {
+var ref = new Firebase("https://clubcim.firebaseio.com/");
+if (ref.getAuth() === null) {
     window.location.href = "login.html";
 }
-
+var fb = new Firebase("https://ccim.firebaseio.com/")
 $(document).ready(setup);
 function getTime() {
     var year = new Date();
