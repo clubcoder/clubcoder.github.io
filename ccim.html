@@ -5,7 +5,7 @@
         <script>
         var fb = new Firebase("https://ccim.firebaseio.com/");
         if (fb.getAuth() === null) {
-            window.location.href = "login.html?continue=" + encodeURI(window.location.href);
+            window.location.href = "login.html?continue=" + encodeURIComponent(window.location.href);
         }
         </script>
         <meta charset="utf-8">
