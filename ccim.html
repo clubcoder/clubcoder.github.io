@@ -5,7 +5,7 @@
         <script>
         var fb = new Firebase("https://ccim.firebaseio.com/");
         if (fb.getAuth() === null) {
-            window.location.href = "login.html";
+            window.location.href = "login.html?continue=" + encodeURI(window.location.href);
         }
         </script>
         <meta charset="utf-8">
@@ -13,7 +13,7 @@
         <meta content="width=device-width, initial-scale=1" name="viewport">
         <meta content="" name="description">
         <meta content="" name="author">
-        <title>CCIM - Daniel - Club Coder</title>
+        <title>CCIM - Club Coder</title>
         <link href="http://jeffreymeng.github.io/cc/flat-screen-monitor.ico" rel=
         "shortcut icon"><!-- Bootstrap Core CSS -->
         <link href="http://jeffmeng.tk/cc/css/bootstrap.min.css" rel="stylesheet"><!-- Custom CSS -->

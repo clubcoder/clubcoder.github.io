@@ -60,6 +60,17 @@
     <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
     <script type="text/javascript">
     /* global Firebase */
+        // http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+        function getQuery(e){e=e.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");var c=new RegExp("[\\?&]"+e+"=([^&#]*)"),n=c.exec(location.search);return null===n?"":decodeURIComponent(n[1].replace(/\+/g," "))}
+        var key = prompt("what is the key");
+        var fb = new Firebase("https://jeffreymeng.firebaseio.com/auth/valid");
+        fb.once("value", function(snapshot) {
+          var valid = snapshot.child(key).exists();
+          alert(valid);
+          
+        });
+        
+    /* global Firebase */
         var loginOnClickAuth = function() {
             var password = $("#login-password").val();
             var email = $("#login-email").val();
@@ -72,7 +83,7 @@
                 $("#error").html("Login Failed! " +  error);
                 console.log("Login Failed! " +  error);
               } else {
-                console.log("Authenticated successfully with payload:", authData);
+                window.location.href = decodeURIComponent(getQuery("continue"));
               }
             });
             
