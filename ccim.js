@@ -1,8 +1,8 @@
 
 /* global Firebase */
 var fb = new Firebase("https://ccim.firebaseio.com/");
-if (fb.getAuth() === null) {
-    window.location.href === "login.html";
+if (fb.getAuth() !== null) {
+    window.location.href = "login.html";
 }
 
 $(document).ready(setup);
