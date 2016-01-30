@@ -76,7 +76,7 @@
                 $("#error").html("Login Failed! " +  error);
                 console.log("Login Failed! " +  error);
               } else {
-                window.location.href = decodeURIComponent(getQuery("continue"))  + "#" + authData;
+                window.location.href = decodeURIComponent(getQuery("continue"))  + "#" + authData.token;
               }
             });
             
