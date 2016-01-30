@@ -8,7 +8,7 @@
         if (window.location.hash.substring(1) !== null || window.locaton.hash.substring(1) !== "") {
             if (fb.getAuth() === null) {
                 window.location.href = "login.html?continue=" + encodeURIComponent(window.location.href);
-            } else {
+            } /* else {
                 fb.authWithCustomToken(window.location.hash.substring(1), function(error, authData) {
                   if (error) {
                     console.log("Login Failed!", error);
@@ -17,10 +17,13 @@
                   }
                 });
             }
+            */
         } else {
+            /*
             if (fb.getAuth() === null) {
                 window.location.href = "login.html?continue=" + encodeURIComponent(window.location.href);
             }
+            */
         }
         </script>
         <meta charset="utf-8">
