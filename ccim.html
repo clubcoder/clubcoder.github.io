@@ -3,9 +3,20 @@
     <head>
         <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script> 
         <script>
+        
         var fb = new Firebase("https://ccim.firebaseio.com/");
-        if (fb.getAuth() === null) {
-            window.location.href = "login.html?continue=" + encodeURIComponent(window.location.href);
+        if (window.locationl.hash.substring(1) !== null || window.locaton.hash.substring(1) !== "") {
+            fb.authWithCustomToken(window.location.hash.substring(1), function(error, authData) {
+              if (error) {
+                console.log("Login Failed!", error);
+              } else {
+                console.log("Login Succeeded!", authData);
+              }
+            });
+        } else {
+            if (fb.getAuth() === null) {
+                window.location.href = "login.html?continue=" + encodeURIComponent(window.location.href);
+            }
         }
         </script>
         <meta charset="utf-8">
