@@ -5,7 +5,7 @@
         <script>
         
         var fb = new Firebase("https://ccim.firebaseio.com/");
-        if (window.locationl.hash.substring(1) !== null || window.locaton.hash.substring(1) !== "") {
+        if (window.location.hash.substring(1) !== null || window.locaton.hash.substring(1) !== "") {
             fb.authWithCustomToken(window.location.hash.substring(1), function(error, authData) {
               if (error) {
                 console.log("Login Failed!", error);
