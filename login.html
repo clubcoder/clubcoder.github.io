@@ -98,7 +98,11 @@ function keyGen()
         
         var x = keyGen()
         fb.child(x).set(username);
-        window.location.href = decodeURIComponent(getQuery("continue"))  + "#" + authData.token;
+        if (getQuery("continue") === "ccim") {
+            window.location.href = "http://im.clubcoder.tk/refer.html?token=" + x + "&username=" + username + "&continue=http%3A%2F%2Fim.clubcoder.tk%2F";
+        } else {
+            window.location.href = decodeURIComponent(getQuery("continue"));
+        }
 
     }
     
