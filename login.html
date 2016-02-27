@@ -52,17 +52,40 @@
                         <paper-input label="password" type="password" id="login-password"></paper-input>
                         <p class="text-danger" id="error"></p>
                         <paper-button style="background-color:#4285F5;color:white;" id="login-submit">Log In</paper-button>
+                        <p>Or:</p>
+                        <a class="btn btn-block btn-social btn-google">
+    <span class="fa fa-google"></span> Sign in with Google
+  </a>
                     </div>
                 </paper-card>
             </div>
         </div>
     </div>
     <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
+    <script>
+    function googleLogin() {
+var ref = new Firebase("https://ccim2.firebaseio.com");
+if (fb.getAuth()) {
+window.location.href = decodeURIComponent(getQuery("continue"))  + "#" + authData.token;
+} else {
+  ref.authWithOAuthRedirect("google", function(error) {
+    if (error) {
+      console.log("Login Failed!", error);
+    } else {
+      // We'll never get here, as the page will redirect on success.
+    }
+  }, {
+    remember: "sessionOnly",
+    scope: "email"
+  });
+}
+}
+</script>
     <script type="text/javascript">
     /* global Firebase */
         // http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
         function getQuery(e){e=e.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");var c=new RegExp("[\\?&]"+e+"=([^&#]*)"),n=c.exec(location.search);return null===n?"":decodeURIComponent(n[1].replace(/\+/g," "))}
-        
+
     /* global Firebase */
         var loginOnClickAuth = function() {
             var password = $("#login-password").val();
