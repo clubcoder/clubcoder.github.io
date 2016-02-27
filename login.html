@@ -44,7 +44,7 @@
     if (fb.getAuth()) {
         success(fb.getAuth().google.email)
     } else {
-        ref.authWithOAuthRedirect("google", function(error) {
+        fb.authWithOAuthRedirect("google", function(error) {
       if (error) {
         console.log("Login Failed!", error);
       } else {
