@@ -14,6 +14,8 @@ a:focus {
   outline-offset: -2px;
 }</style>
     <script>
+            var fb = new Firebase("https://ccim2.firebaseio.com");
+
     function keyGen() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -54,7 +56,6 @@ a:focus {
 
     }
 function li(){
-        var fb = new Firebase("https://ccim2.firebaseio.com");
 
     fb.authWithOAuthPopup("google", function(error, authData) {
       if (error) {
