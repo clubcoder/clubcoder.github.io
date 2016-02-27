@@ -1,7 +1,6 @@
 <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
     <script>
-    function keyGen()
-{
+    function keyGen() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
@@ -40,19 +39,18 @@
             window.location.href = "http://im.clubcoder.tk/refer.html?token=" + x + "&username=" + username + "&continue=http%3A%2F%2Fim.clubcoder.tk%2F";
 
     }
-    var fb = new Firebase("https://ccim2.firebaseio.com");
-    if (fb.getAuth()) {
-        success(fb.getAuth().google.email)
-    } else {
-        /*
-        fb.authWithOAuthRedirect("google", function(error) {
+function li(){
+        var fb = new Firebase("https://ccim2.firebaseio.com");
+
+    fb.authWithOAuthRedirect("google", function(error, authData) {
       if (error) {
         console.log("Login Failed!", error);
       } else {
-        // We'll never get here, as the page will redirect on success.
+        success(fb.google.email)
       }
     });
-    */
-    }
+}
 
     </script>
+<h1>Login to club coder to access CCIM and Club Coder products</h1>
+<a onclick="li()">Click Here to login with google</a>
