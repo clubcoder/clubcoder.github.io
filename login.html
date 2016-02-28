@@ -72,6 +72,7 @@
                 console.log("Login Failed!", error);
             }
             else {
+                console.log(authData)
                 success(authData.google.email, authData.token)
             }
         });
