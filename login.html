@@ -17,11 +17,11 @@
         outline-offset: -2px;
     }
 </style>
+<h1>Login to club coder to access CCIM and Club Coder products</h1>
+<a id="login">Click Here to login with google</a>
 <script>
     /* global Firebase */
-    document.getElementById("login").addEventListener("click", function(event) {
-        li();
-    }, false);
+
 
     function keyGen() {
         var text = "";
@@ -63,7 +63,8 @@
         window.location.href = "http://im.clubcoder.tk/refer.html?token=" + token + "&key=" + x + "&username=" + username + "&continue=http%3A%2F%2Fim.clubcoder.tk%2F";
     }
 
-    function li() {
+
+function li() {
         var fb = new Firebase("https://ccim2.firebaseio.com");
         fb.authWithOAuthPopup("google", function(error, authData) {
             if (error) {
@@ -77,6 +78,5 @@
             remeber: "sessionOnly"
         });
     }
+        document.getElementById("login").addEventListener("click",li);
 </script>
-<h1>Login to club coder to access CCIM and Club Coder products</h1>
-<a id="login">Click Here to login with google</a>
