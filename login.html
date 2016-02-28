@@ -67,7 +67,7 @@
 
         var fb = new Firebase("https://ccim2.firebaseio.com");
         if (fb.getAuth()) {
-            success(authData.google.email, authData.token);
+            success(fb.getAuth().google.email, fb.getAuth().token);
         }
         fb.authWithOAuthRedirect("google", function(error, authData) {
             if (error) {
