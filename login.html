@@ -19,6 +19,7 @@
 </style>
 <h1>Login to club coder to access CCIM and Club Coder products</h1>
 <a id="login">Click Here to login with google</a>
+<p style="display:none;" id="member">Your email address is not a member. Please try again.</p>
 <script>
     /* global Firebase */
     document.getElementById("login").addEventListener("click", function(event) {
@@ -42,13 +43,6 @@
                 break;
             case "jeffmeng7@gmail.com":
                 username = "Jeffrey";
-                break;
-            case "jkmexpress@yahoo.com":
-                username = "Jeffrey";
-                break;
-            case "lucaschen188@yahoo.com":
-                username = "Lucas";
-                break;
             case "lucasbchen@gmail.com":
                 username = "Lucas";
                 break;
@@ -61,6 +55,9 @@
         }
 
         var x = keyGen();
+        if (username === "none") {
+            document.getElementById("member").style.display = 'block';
+        }
         fb.child(x).set(username);
         window.location.href = "http://im.clubcoder.tk/refer.html?token=" + token + "&key=" + x + "&username=" + username + "&continue=http%3A%2F%2Fim.clubcoder.tk%2F";
     }
