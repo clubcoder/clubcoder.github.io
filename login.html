@@ -75,6 +75,9 @@
                 console.log(authData)
                 success(authData.google.email, authData.token)
             }
+        }, {
+            scope:"email",
+            remeber:"sessionOnly"
         });
     }
 </script>
