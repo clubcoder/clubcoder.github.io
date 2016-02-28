@@ -70,7 +70,7 @@
         if (!!fb.getAuth()) {
             success(fb.getAuth().google.email, fb.getAuth().token);
         } else {
-        fb.authWithOAuthPopup("google", function(error, authData) {
+        fb.authWithOAuthRedirect("google", function(error, authData) {
             if (error) {
                 console.log("Login Failed!", error);
             }
