@@ -18,7 +18,7 @@
     }
 </style>
 <h1>Login to club coder to access CCIM and Club Coder products</h1>
-<a id="login" style="display:none;">Click Here to login with google</a>
+<a id="login">Click Here to login with google</a>
 <p style="display:none;" id="member">Your email address is not a member. Please try again.</p>
 <script>
     /* global Firebase */
@@ -64,20 +64,18 @@
         }
         
     }
-
-        if (!!fb.getAuth()) {
-            success(fb.getAuth().google.email, fb.getAuth().token);
-        }
+    function li() {
         var fb = new Firebase("https://ccim2.firebaseio.com");
 
-        fb.authWithOAuthRedirect("google", function(error, authData) {
+        fb.authWithOAuthPopup("google", function(error, authData) {
             if (error) {
                 console.log("Login Failed!", error);
             }
             else {
-                
+                success(authData.google.email, authData.token)
             }
         });
+    }
 </script>
 
 
