@@ -1,5 +1,9 @@
+<script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
+
 <script>
 sessionStorage.setItem("auth", "false")
+var fb = new Firebase("https://ccim2.firebaseio.com");
+fb.unauth()
 </script>
 <h1>Logout</h1>
 <p>You have been succuessfully logged out.</p>
