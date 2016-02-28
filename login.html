@@ -68,8 +68,7 @@
         var fb = new Firebase("https://ccim2.firebaseio.com");
         if (fb.getAuth()) {
             success(fb.getAuth().google.email, fb.getAuth().token);
-        }
-        fb.authWithOAuthRedirect("google", function(error, authData) {
+        } else {fb.authWithOAuthRedirect("google", function(error, authData) {
             if (error) {
                 console.log("Login Failed!", error);
             }
@@ -80,7 +79,8 @@
             scope: "email",
             remeber: "sessionOnly"
         });
-    }
+    }}
+        
     li()
 </script>
 
