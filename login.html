@@ -95,7 +95,7 @@
             fb.child(x).set(username);
             var query = "?token=" + token + "&key=" + x + "&username=" + username;
             if (getQuery("continue") === "ccim") {
-                window.location.href = "http://im.clubcoder.tk/refer.html" + query + + "&continue=http%3A%2F%2Fim.clubcoder.tk%2F"
+                window.location.href = "http://im.clubcoder.tk/refer.html" + query + "&continue=http%3A%2F%2Fim.clubcoder.tk%2F"
             } else {
                 window.location.href = decodeURIComponent(getQuery("continue")) + (getQuery("query") !== null ? "&" + getQuery("query") : null)
             }
