@@ -58,6 +58,9 @@
     <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
 
     <script type="text/javascript">
+    if (getQuery("action") === "reset") {
+
+    }
     function keyGen() {
         var text = "";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -106,7 +109,7 @@
         var loginOnClickAuth = function() {
             var password = $("#login-password").val();
             var email = $("#login-email").val();
-            var ref = new Firebase("https://clubcim.firebaseio.com");
+            var ref = new Firebase("https://ccim2.firebaseio.com");
             ref.authWithPassword({
               email    : email,
               password : password
