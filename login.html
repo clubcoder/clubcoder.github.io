@@ -157,12 +157,12 @@
                 */
             ];
             var po = document.createElement('script'); po.type = 'text/javascript';
-                po.src = 'http://jeffmeng.tk/polymer/webcomponentsjs/webcomponents-lite.min.js';
+                po.src = '/polymer/webcomponentsjs/webcomponents-lite.min.js';
                 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
             var i;
             for (i = 0; i < elements.length; i++) {
                 var po2 = document.createElement('link'); po2.rel = 'import';
-                po2.href = 'http://jeffmeng.tk/polymer/' + elements[i] + '/' + elements[i] + '.html';
+                po2.href = '/polymer/' + elements[i] + '/' + elements[i] + '.html';
                 var so = document.getElementsByTagName('link')[i + 1]; so.parentNode.insertBefore(po2, so);
             }
           })();
