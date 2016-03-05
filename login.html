@@ -90,7 +90,12 @@
             document.getElementById("member").style.display = 'block';
         } else {
             fb.child(x).set(username);
-        window.location.href = "http://im.clubcoder.tk/refer.html?token=" + token + "&key=" + x + "&username=" + username + "&continue=http%3A%2F%2Fim.clubcoder.tk%2F";
+            var query = "?token=" + token + "&key=" + x + "&username=" + username;
+            if (getQuery("continue") === "ccim") {
+                window.location.href = "http://im.clubcoder.tk/refer.html" + query + + "&continue=http%3A%2F%2Fim.clubcoder.tk%2F"
+            } else {
+                window.location.href = decodeURIComponent(getQuery("continue")) + (getQuery("query") !== null ? "&" + getQuery("query") : null)
+            }
         }
         
     }
@@ -118,9 +123,7 @@
         $("#login-submit").click(loginOnClickAuth);
         (function() {
             var elements = [
-                /*
-                "paper-badge",
-                */
+                // "paper-badge",
                 "paper-button",
                 "paper-card",
                 "paper-checkbox",
@@ -137,8 +140,7 @@
                 */
                 "paper-input",
                 "paper-item",
-                "paper-listbox"//,
-                /*
+                "paper-listbox"/*,
                 "paper-material",
                 "paper-menu",
                 "paper-menu-button",
