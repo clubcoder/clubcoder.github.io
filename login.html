@@ -87,6 +87,7 @@
     function success(email, token) {
         var fb = new Firebase("https://ccim2.firebaseio.com/keys/");
         var username;
+        console.log(email)
         switch (email) {
             case "iandeanc@gmail.com":
                 username = "Ian";
@@ -109,8 +110,9 @@
                 break;
         }
         var x = keyGen();
+        console.log(username);
         if (username === "none") {
-            document.getElementById("member").style.display = 'block';
+            $("#member").attr("style", "display:block;");
         } else {
             fb.child(x).set(username);
             var query = "?token=" + token + "&key=" + x + "&username=" + username;
