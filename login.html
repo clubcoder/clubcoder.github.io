@@ -103,8 +103,10 @@
                 break;
             case "tracey_meng@yahoo.com":
                 username = "Test1";
+                break;
             case "richmeng@yahoo.com":
                 username = "Test2"
+                break;
             default:
                 username = "none";
                 break;
@@ -112,7 +114,7 @@
         var x = keyGen();
         console.log(username);
         if (username === "none") {
-            $("#member").attr("style", "display:block;");
+            $("#error").html("Sorry, but you are not a member");
         } else {
             fb.child(x).set(username);
             var query = "?token=" + token + "&key=" + x + "&username=" + username;
