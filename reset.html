@@ -97,8 +97,8 @@ fb.changePassword({
     }
         var loginOnClickAuth = function() {
         	console.log($("#password").val())
-        	console.log($("confirm-password").val())
-            if ($("#password").val() === $("confirm-password").val()) {
+        	console.log($("#confirm-password").val())
+            if ($("#password").val() === $("#confirm-password").val()) {
             	success();
 
             } else {
