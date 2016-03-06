@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="Jeffrey Meng">
 
-    <title>Jeffrey Meng</title>
+    <title>Reset Password - CCIM</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -44,35 +44,23 @@
     <div class="container">
         <div class="row">
             <div class="box">
-                <paper-card heading="Login" elevation="2" class="login" id="header">
+                <paper-card heading="Change Club Coder Password" elevation="2" class="login">
                     <div class="col-lg-12">
-                        <paper-input label="email address" id="login-email"></paper-input>
-                        <paper-input label="password" type="password" id="login-password"></paper-input>
+                        <paper-input label="Choose a password" id="password" type="password"></paper-input>
+                        <paper-input label="Confirm Password" type="password" id="confirm-password"></paper-input>
                         <p class="text-danger" id="error"></p>
-                        <paper-button style="background-color:#4285F5;color:white;" id="login-submit">Log In</paper-button>
-                        <a onclick="forgot()">Forgot Password?</a>
+                        <paper-button style="background-color:#4285F5;color:white;" id="login-submit">Reset</paper-button>
                     </div>
                 </paper-card>
             </div>
         </div>
     </div>
+        <script src="js/jquery.js"></script>
+
     <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
 
     <script type="text/javascript">
-    var forgot = false;
-    function forgot() {
-        $("#login-password").hide();
-        $("#login-submit").html("Reset")
-        $("#header").attr("heading", "Please enter your email, and we will reset your password")
-        forgot = true;
-        window.forgot === true;
 
-    }
-    window.onkeyup = function(keycode) {
-        if (keycode.which === 13) {
-            loginOnClickAuth()
-        }
-    }
     function keyGen() {
         var text = "";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -82,71 +70,38 @@
     }
     function success(email, token) {
         var fb = new Firebase("https://ccim2.firebaseio.com/keys/");
-        var username;
-        switch (email) {
-            case "iandeanc@gmail.com":
-                username = "Ian";
-                break;
-            case "jeffmeng7@gmail.com":
-                username = "Jeffrey";
-                break;
-            case "lucaschen188@gmail.com":
-                username = "Lucas";
-                break;
-            case "chefdude14@gmail.com":
-                username = "Daniel";
-                break;
-            default:
-                username = "none";
-                break;
-        }
-        var x = keyGen();
-        if (username === "none") {
-            document.getElementById("member").style.display = 'block';
-        } else {
-            fb.child(x).set(username);
-            var query = "?token=" + token + "&key=" + x + "&username=" + username;
-            if (getQuery("continue") === "ccim") {
-                window.location.href = "http://im.clubcoder.tk/refer.html" + query + "&continue=http%3A%2F%2Fim.clubcoder.tk%2F"
-            } else {
-                window.location.href = decodeURIComponent(getQuery("continue")) + (getQuery("query") !== null ? "&" + getQuery("query") : null)
-            }
+fb.changePassword({
+  email       : getQuery("email"),
+  oldPassword : getQuery("token"),
+  newPassword : $("#password").val()
+}, function(error) {
+  if (error === null) {
+  	$("#error").addClass("txt-success").removeClass("txt-danger")
+    $("#error").html("Password changed successfully");
+  } else {
+    $("#error").html("Error changing password:" +  error);
+  }
+});
+
+
         }
         
     }
     /* global Firebase */
         // http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
-        function getQuery(e){e=e.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");var c=new RegExp("[\\?&]"+e+"=([^&#]*)"),n=c.exec(location.search);return null===n?"":decodeURIComponent(n[1].replace(/\+/g," "))}
     /* global Firebase */
+    window.onkeyup = function(keycode) {
+        if (keycode.which === 13) {
+            loginOnClickAuth()
+        }
+    }
         var loginOnClickAuth = function() {
-            if (forgot === true) {
-var ref = new Firebase("https://<YOUR-FIREBASE-APP>.firebaseio.com");
-ref.resetPassword({
-  email : $("#login-email").val()
-}, function(error) {
-  if (error === null) {
-    $("#error").removeClass("txt-danger").addClass("txt-success").html("Password reset email sent successfully")
-    console.log();
-  } else {
-   $("#error").val("Error sending password reset email:" +  error);
-  }
-});
+            if ($("#password").val() === $("confirm-password").val()) {
+            	success()
             } else {
-            var password = $("#login-password").val();
-            var email = $("#login-email").val();
-            var ref = new Firebase("https://ccim2.firebaseio.com");
-            ref.authWithPassword({
-              email    : email,
-              password : password
-            }, function(error, authData) {
-              if (error) {
-                $("#error").html("Login Failed! " +  error);
-                console.log("Login Failed! " +  error);
-              } else {
-                success(email, authData.token)
-              }
-            });
+            	$("#error").val("Passwords don't match!")
             }
+            
         };
         $("#login-submit").click(loginOnClickAuth);
         (function() {
@@ -187,17 +142,19 @@ ref.resetPassword({
                 */
             ];
             var po = document.createElement('script'); po.type = 'text/javascript';
-                po.src = '/polymer/webcomponentsjs/webcomponents-lite.min.js';
+                po.src = 'polymer/webcomponentsjs/webcomponents-lite.min.js';
                 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
             var i;
             for (i = 0; i < elements.length; i++) {
                 var po2 = document.createElement('link'); po2.rel = 'import';
-                po2.href = '/polymer/' + elements[i] + '/' + elements[i] + '.html';
+                po2.href = 'polymer/' + elements[i] + '/' + elements[i] + '.html';
                 var so = document.getElementsByTagName('link')[i + 1]; so.parentNode.insertBefore(po2, so);
             }
           })();
     </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script src="js/jquery.js"></script>
+
+    <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
 
 </body>
 
