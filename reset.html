@@ -76,15 +76,12 @@ fb.changePassword({
   newPassword : $("#password").val()
 }, function(error) {
   if (error === null) {
-  	$("#error").addClass("txt-success").removeClass("txt-danger")
-    $("#error").html("Password changed successfully");
+  	$("#error").addClass("text-success").removeClass("text-danger")
+    $("#error").html("Password changed successfully, You may now <a href='login.html'>login</a>");
   } else {
     $("#error").html("Error changing password:" +  error);
   }
 });
-
-
-        }
         
     }
     /* global Firebase */
