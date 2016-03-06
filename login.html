@@ -41,6 +41,17 @@
 </head>
 
 <body>
+    <script>
+    var forgot = false;
+    function forgot() {
+        $("#login-password").hide();
+        $("#login-submit").html("Reset")
+        $("#header").attr("heading", "Please enter your email, and we will reset your password")
+        forgot = true;
+        window.forgot === true;
+
+    }
+    </script>
     <div class="container">
         <div class="row">
             <div class="box">
@@ -59,15 +70,7 @@
     <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
 
     <script type="text/javascript">
-    var forgot = false;
-    function forgot() {
-        $("#login-password").hide();
-        $("#login-submit").html("Reset")
-        $("#header").attr("heading", "Please enter your email, and we will reset your password")
-        forgot = true;
-        window.forgot === true;
-
-    }
+    
     window.onkeyup = function(keycode) {
         if (keycode.which === 13) {
             loginOnClickAuth()
