@@ -128,10 +128,9 @@ ref.resetPassword({
   email : $("#login-email").val()
 }, function(error) {
   if (error === null) {
-    $("#error").removeClass("txt-danger").addClass("txt-success").html("Password reset email sent successfully")
-    console.log();
+    $("#error").removeClass("text-danger").addClass("text-success").html("Password reset email sent successfully")
   } else {
-   $("#error").val("Error sending password reset email:" +  error);
+   $("#error").html("Error sending password reset email:" +  error);
   }
 });
             } else {
