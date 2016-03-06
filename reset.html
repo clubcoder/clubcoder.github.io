@@ -60,6 +60,7 @@
     <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
 
     <script type="text/javascript">
+function getQuery(e){e=e.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");var c=new RegExp("[\\?&]"+e+"=([^&#]*)"),n=c.exec(location.search);return null===n?"":decodeURIComponent(n[1].replace(/\+/g," "))}
 
     function keyGen() {
         var text = "";
@@ -76,9 +77,11 @@ fb.changePassword({
   newPassword : $("#password").val()
 }, function(error) {
   if (error === null) {
+  	console.log(true)
   	$("#error").addClass("text-success").removeClass("text-danger")
-    $("#error").html("Password changed successfully, You may now <a href='login.html'>login</a>");
+    $("#error").html("Password changed successfully, You may now <a href='login.html'>login</a>.");
   } else {
+  	consolelog(error)
     $("#error").html("Error changing password:" +  error);
   }
 });
@@ -93,10 +96,13 @@ fb.changePassword({
         }
     }
         var loginOnClickAuth = function() {
+        	console.log($("#password").val())
+        	console.log($("confirm-password").val())
             if ($("#password").val() === $("confirm-password").val()) {
-            	success()
+            	success();
+
             } else {
-            	$("#error").val("Passwords don't match!")
+            	$("#error").html("Passwords don't match!")
             }
             
         };
