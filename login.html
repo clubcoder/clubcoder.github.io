@@ -43,7 +43,7 @@
 <body>
     <script>
     var forgot = false;
-    function forgot() {
+    function f() {
         $("#login-password").hide();
         $("#login-submit").html("Reset")
         $("#header").attr("heading", "Please enter your email, and we will reset your password")
@@ -61,7 +61,7 @@
                         <paper-input label="password" type="password" id="login-password"></paper-input>
                         <p class="text-danger" id="error"></p>
                         <paper-button style="background-color:#4285F5;color:white;" id="login-submit">Log In</paper-button>
-                        <a onclick="forgot()">Forgot Password?</a>
+                        <a onclick="f()">Forgot Password?</a>
                     </div>
                 </paper-card>
             </div>
