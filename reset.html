@@ -61,7 +61,9 @@
 
     <script type="text/javascript">
 function getQuery(e){e=e.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");var c=new RegExp("[\\?&]"+e+"=([^&#]*)"),n=c.exec(location.search);return null===n?"":decodeURIComponent(n[1].replace(/\+/g," "))}
-
+    if (getQuery("email") === null || getQuery("token") === null) {
+        $("box").html('<h1>Unathorized or Broken request</h1><p>The link you recieved is invalid. If you did not get this link from a email, or accidentally came here, click <a href="index.html">here</a> to go to the home page, or here to go to <a href="http://im.clubcoder.tk">ccim</a>.')
+    }
     function keyGen() {
         var text = "";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -81,7 +83,7 @@ fb.changePassword({
   	$("#error").addClass("text-success").removeClass("text-danger")
     $("#error").html("Password changed successfully, You may now <a href='http://im.clubcoder.tk'>login</a>.");
   } else {
-  	consolelog(error)
+  	console.log(error)
     $("#error").html("Error changing password:" +  error);
   }
 });
