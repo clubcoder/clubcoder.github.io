@@ -113,7 +113,7 @@
             fb.child(x).set(username);
             var query = "?token=" + token + "&key=" + x + "&username=" + username;
             if (getQuery("continue") === "ccim") {
-                window.location.href = "http://clubcoder.github.io/ccim/refer.html" + query + "&continue=http%3A%2F%2Fim.clubcoder.tk%2F"
+                window.location.href = "http://clubcoder.github.io/ccim/refer.html" + query + "&continue=http%3A%2F%2Fclubcoder.github.io%2Fccim%2F"
             } else {
                 window.location.href = decodeURIComponent(getQuery("continue")) + query;
             }
